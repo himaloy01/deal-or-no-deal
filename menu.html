@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deal or No Deal – Menu</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .menu-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 2rem;
+    }
+    .menu-btn {
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: var(--gold);
+      color: var(--bg-darker);
+      box-shadow: 0 4px 15px var(--gold-glow);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .menu-btn:hover {
+      background: var(--gold-hover);
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-container">
+    <h1 class="game-title">Deal or No Deal</h1>
+    <p class="instruction-bar">Select your prize pool</p>
+    <button class="menu-btn" id="btn-500k">Play with $500,000</button>
+    <button class="menu-btn" id="btn-1m">Play with $1,000,000</button>
+  </div>
+  <script>
+    const btn500k = document.getElementById('btn-500k');
+    const btn1m = document.getElementById('btn-1m');
+    btn500kEventListener('click', () => {
+      localStorage.setItem('dealPrizePool', '500k');
+      // clear any previous game state to start fresh
+      localStorage.removeItem('dealGameState');
+      window.location.href = 'index.html';
+    });
+    btn1m.addEventListener('click', () => {
+      localStorage.setItem('dealPrizePool', '1m');
+      localStorage.removeItem('dealGameState');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
