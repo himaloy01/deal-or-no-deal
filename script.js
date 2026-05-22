@@ -5,6 +5,10 @@ const VALUES = [
 
 const ROUNDS = [6, 5, 4, 3, 2, 1, 1, 1, 1];
 
+// Audio Elements
+const winSound = new Audio('https://raw.githubusercontent.com/aaronnech/Who-Wants-to-Be-a-Millionaire/master/sound/right.mp3');
+const loseSound = new Audio('https://raw.githubusercontent.com/aaronnech/Who-Wants-to-Be-a-Millionaire/master/sound/wrong.mp3');
+
 let gameState = {
     cases: [], // { id: 1..26, value: number, isOpened: boolean }
     playerCase: null,
@@ -178,8 +182,12 @@ function handleCaseClick(clickedCase) {
             // Show dramatic message based on value
             if (clickedCase.value >= 100000) {
                 instructionBarEl.textContent = `Oh no! $${formatMoney(clickedCase.value)}!`;
+                loseSound.currentTime = 0;
+                loseSound.play().catch(e => console.log('Audio play failed:', e));
             } else {
                 instructionBarEl.textContent = `Phew! Only $${formatMoney(clickedCase.value)}.`;
+                winSound.currentTime = 0;
+                winSound.play().catch(e => console.log('Audio play failed:', e));
             }
             
             renderCases();
