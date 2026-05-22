@@ -6,8 +6,18 @@ const VALUES = [
 const ROUNDS = [6, 5, 4, 3, 2, 1, 1, 1, 1];
 
 // Audio Elements
-const winSound = new Audio('https://raw.githubusercontent.com/aaronnech/Who-Wants-to-Be-a-Millionaire/master/sound/right.mp3');
-const loseSound = new Audio('https://raw.githubusercontent.com/aaronnech/Who-Wants-to-Be-a-Millionaire/master/sound/wrong.mp3');
+const winSound = new Audio('https://www.myinstants.com/media/sounds/millionaire-correct.mp3');
+const loseSound = new Audio('https://www.myinstants.com/media/sounds/wrong-answer-sound-effect.mp3');
+
+// Preload and unlock audio on first click (Browser Autoplay Policy fix)
+let audioUnlocked = false;
+document.addEventListener('click', () => {
+    if (!audioUnlocked) {
+        winSound.play().then(() => { winSound.pause(); winSound.currentTime = 0; }).catch(() => {});
+        loseSound.play().then(() => { loseSound.pause(); loseSound.currentTime = 0; }).catch(() => {});
+        audioUnlocked = true;
+    }
+}, { once: true });
 
 let gameState = {
     cases: [], // { id: 1..26, value: number, isOpened: boolean }
