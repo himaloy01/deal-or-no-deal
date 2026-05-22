@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deal or No Deal</title>
+    <meta name="description" content="Play the premium Deal or No Deal game online. Experience the thrill of the banker's offer!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- Header / Instructions -->
+        <header class="game-header">
+            <h1 class="game-title">DEAL <span>OR NO</span> DEAL</h1>
+            <div id="instruction-bar" class="instruction-bar">
+                Welcome! Choose your lucky case to start.
+            </div>
+        </header>
+
+        <!-- Main Game Area -->
+        <main class="game-area">
+            <!-- Left Money Board -->
+            <aside class="money-board left-board" id="left-board">
+                <!-- Dynamically populated -->
+            </aside>
+
+            <!-- Center Game Board -->
+            <section class="center-board">
+                <!-- Player's Case Area -->
+                <div class="player-case-area">
+                    <div class="player-case-label">YOUR CASE</div>
+                    <div id="player-case-container" class="player-case-container empty">
+                        <!-- Player's chosen case will appear here -->
+                        <div class="case-placeholder">?</div>
+                    </div>
+                </div>
+
+                <!-- Briefcases Grid -->
+                <div class="cases-grid" id="cases-grid">
+                    <!-- Dynamically populated 26 cases -->
+                </div>
+            </section>
+
+            <!-- Right Money Board -->
+            <aside class="money-board right-board" id="right-board">
+                <!-- Dynamically populated -->
+            </aside>
+        </main>
+
+        <!-- Banker Modal -->
+        <div id="banker-modal" class="modal-overlay hidden">
+            <div class="modal-content glass-panel">
+                <div class="banker-icon">☎️</div>
+                <h2 class="banker-title">THE BANKER CALLS</h2>
+                <p class="banker-message">The banker is willing to buy your case for:</p>
+                <div class="banker-offer" id="banker-offer-value">$0</div>
+                <div class="modal-actions">
+                    <button id="btn-deal" class="btn btn-deal">DEAL</button>
+                    <button id="btn-no-deal" class="btn btn-no-deal">NO DEAL</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div id="game-over-modal" class="modal-overlay hidden">
+            <div class="modal-content glass-panel">
+                <h2 class="game-over-title" id="game-over-title">GAME OVER</h2>
+                <p class="game-over-message" id="game-over-message">You won</p>
+                <div class="final-winnings" id="final-winnings-value">$0</div>
+                <p class="case-reveal-message" id="case-reveal-message"></p>
+                <div class="modal-actions">
+                    <button id="btn-play-again" class="btn btn-primary">PLAY AGAIN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
